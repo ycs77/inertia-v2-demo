@@ -32,4 +32,3 @@ php artisan serve
 ```
 
 現在在瀏覽器中打開 [http://localhost:8000/](http://localhost:8000/)。
-
