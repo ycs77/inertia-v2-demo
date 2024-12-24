@@ -18,15 +18,15 @@ export const nav = [
     description: '不預先輸入資料到 HTML，而是當 HTML 載入完成之後才載入資料',
   },
   {
-    title: 'Infinite scrolling',
-    zhTitle: '無限滾動',
-    href: '/infinite-scrolling',
-    description: '無限滾動載入資料',
-  },
-  {
     title: 'Lazy loading',
     zhTitle: '惰性載入',
     href: '/lazy-loading',
     description: '當元素出現在畫面中時，才載入資料',
+  },
+  {
+    title: 'Infinite scroll',
+    zhTitle: '無限滾動',
+    href: '/infinite-scroll',
+    description: '無限滾動載入資料',
   },
 ]

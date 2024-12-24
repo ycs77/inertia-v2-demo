@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -18,7 +19,8 @@ Route::get('/polling', function () {
             'votes' => rand(61, 100),
         ])
         ->sortByDesc('votes')
-        ->values();
+        ->values()
+        ->toArray();
 
     return Inertia::render('Polling', [
         'players' => $players,
@@ -56,7 +58,7 @@ Route::get('/prefetching/users', function () {
             'name' => 'Sho',
             'email' => 'sho202@example.com',
         ],
-    ])->shuffle()->values();
+    ])->shuffle()->values()->toArray();
 
     return Inertia::render('PrefetchingUsers', [
         'users' => $users,
@@ -74,7 +76,7 @@ Route::get('/deferred-props', function () {
                 ['id' => 3, 'title' => 'Item 3'],
                 ['id' => 4, 'title' => 'Item 4'],
                 ['id' => 5, 'title' => 'Item 5'],
-            ]);
+            ])->toArray();
         }, 'newsItems'),
         'users' => Inertia::defer(function () {
             sleep(1.5);
@@ -105,11 +107,25 @@ Route::get('/deferred-props', function () {
                     'name' => 'Sho',
                     'email' => 'sho202@example.com',
                 ],
-            ]);
+            ])->toArray();
         }),
     ]);
 });
 
-Route::inertia('/infinite-scrolling', 'InfiniteScrolling');
-
 Route::inertia('/lazy-loading', 'LazyLoading');
+
+Route::get('/infinite-scroll', function (Request $request) {
+    $page = (int) $request->query('page', 1);
+    $perPage = 30;
+    $start = ($page - 1) * $perPage + 1;
+    $end = $start - 1 + $perPage;
+
+    return Inertia::render('InfiniteScroll', [
+        'items' => Inertia::merge(function () use ($start, $end) {
+            return collect(range($start, $end))->map(function ($i) {
+                return ['id' => $i, 'title' => 'Item ' . $i];
+            })->toArray();
+        }),
+        'page' => $page,
+    ]);
+});
