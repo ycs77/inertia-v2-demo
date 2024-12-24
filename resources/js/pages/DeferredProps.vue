@@ -9,13 +9,26 @@
         <div>
           <!-- 左側側邊欄 -->
           <div class="px-6 py-4 border-2 border-indigo-500">
-            <h4 class="text-lg font-bold">最新資訊</h4>
-
             <Deferred data="newsItems">
               <template #fallback>
-                <div class="mt-3 text-gray-400">載入中...</div>
+                <div class="animate-pulse space-y-5">
+                  <div class="h-4 bg-gray-200 rounded"></div>
+                  <div class="space-y-3">
+                    <div class="h-2 bg-gray-200 rounded"></div>
+                    <div class="h-2 bg-gray-200 rounded"></div>
+                    <div class="grid grid-cols-3 gap-4">
+                      <div class="h-2 bg-gray-200 rounded col-span-1"></div>
+                      <div class="h-2 bg-gray-200 rounded col-span-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-200 rounded"></div>
+                    <div class="grid grid-cols-3 gap-4">
+                      <div class="h-2 bg-gray-200 rounded col-span-2"></div>
+                    </div>
+                  </div>
+                </div>
               </template>
 
+              <h4 class="text-lg font-bold">最新資訊</h4>
               <ul class="mt-3 list-disc list-inside">
                 <li v-for="item in newsItems" :key="item.id">
                   {{ item.title }}
@@ -44,8 +57,31 @@
             <tbody class="bg-white divide-y-2 divide-indigo-500">
               <Deferred data="users">
                 <template #fallback>
-                  <tr>
-                    <td class="px-6 py-4 text-center text-gray-400 whitespace-nowrap" colspan="3">載入中...</td>
+                  <tr v-for="rowWidth in [
+                    [93, 90, 100],
+                    [96, 94, 99],
+                    [89, 99, 71],
+                    [91, 89, 95],
+                    [86, 90, 68],
+                  ]" class="animate-pulse">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div
+                        class="h-2 bg-gray-200 rounded col-span-2"
+                        :style="{ width: `${rowWidth[0]}%` }"
+                      ></div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div
+                        class="h-2 bg-gray-200 rounded col-span-2"
+                        :style="{ width: `${rowWidth[1]}%` }"
+                      ></div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div
+                        class="h-2 bg-gray-200 rounded col-span-2"
+                        :style="{ width: `${rowWidth[2]}%` }"
+                      ></div>
+                    </td>
                   </tr>
                 </template>
 
