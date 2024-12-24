@@ -1,5 +1,7 @@
 # Inertia v2 範例
 
+![](screenshot.png)
+
 使用 Composer 安裝：
 
 ```bash
