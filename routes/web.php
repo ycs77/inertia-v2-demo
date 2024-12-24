@@ -112,7 +112,18 @@ Route::get('/deferred-props', function () {
     ]);
 });
 
-Route::inertia('/lazy-loading', 'LazyLoading');
+Route::get('/lazy-loading', function () {
+    return Inertia::render('LazyLoading', [
+        'usersChart' => Inertia::lazy(function () {
+            sleep(1.5);
+
+            return [
+                'labels' => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                'data' => [12, 19, 3, 5, 2, 3, 7],
+            ];
+        }),
+    ]);
+});
 
 Route::get('/infinite-scroll', function (Request $request) {
     $page = (int) $request->query('page', 1);
