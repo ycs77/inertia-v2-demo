@@ -11,7 +11,7 @@
           <div class="px-6 py-4 border-2 border-indigo-500">
             <Deferred data="newsItems">
               <template #fallback>
-                <div class="animate-pulse space-y-5">
+                <div class="animate-pulse space-y-5 py-1">
                   <div class="h-4 bg-gray-200 rounded"></div>
                   <div class="space-y-3">
                     <div class="h-2 bg-gray-200 rounded"></div>
