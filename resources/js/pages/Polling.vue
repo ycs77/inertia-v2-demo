@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold">Polling (輪巡)：使用 usePoll() 輪巡定時拉取新資料</h2>
 
     <div class="mt-6">
-      <h3 class="mb-3 text-lg text-gray-500 font-bold">範例：遊戲玩家即時分數表</h3>
+      <h3 class="mb-3 text-lg text-gray-500 font-bold">範例：遊戲玩家即時分數表，每隔2秒自動更新</h3>
 
       <table class="min-w-full border-2 border-indigo-500">
         <thead class="bg-indigo-500 text-white">
