@@ -23,10 +23,11 @@ export const nav = [
     href: '/lazy-loading',
     description: '當元素出現在畫面中時，才載入資料',
   },
-  {
-    title: 'Infinite scroll',
-    zhTitle: '無限滾動',
-    href: '/infinite-scroll',
-    description: '無限滾動載入資料',
-  },
+  // // @TODO: 現在無法使用，預計 Inertia 2.1 會支援
+  // {
+  //   title: 'Infinite scroll',
+  //   zhTitle: '無限滾動',
+  //   href: '/infinite-scroll',
+  //   description: '無限滾動載入資料',
+  // },
 ]
