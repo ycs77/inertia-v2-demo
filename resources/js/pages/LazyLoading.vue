@@ -12,10 +12,10 @@
         :style="`opacity: ${i / 10};`"
       >↓</div>
 
-      <div class="p-4 border-2 border-indigo-500">
+      <div class="p-4 border-2 border-indigo-500 aspect-[2/1]">
         <WhenVisible data="usersChart">
           <template #fallback>
-            <div class="h-96 flex items-center justify-center">
+            <div class="h-full flex items-center justify-center">
               載入圖表中...
             </div>
           </template>

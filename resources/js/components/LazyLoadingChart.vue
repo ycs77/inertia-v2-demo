@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="chartRef"></canvas>
+  <canvas ref="chartRef" class="h-full"></canvas>
 </template>
 
 <script setup>
@@ -29,6 +29,8 @@ onMounted(() => {
       }],
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           grid: {
