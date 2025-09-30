@@ -1,7 +1,6 @@
 import { createApp, h } from 'vue'
 import { Link, createInertiaApp } from '@inertiajs/vue3'
 import Layout from './layouts/Layout.vue'
-import '../css/index.css'
 
 createInertiaApp({
   title: () => 'Inertia v2 Demo',

@@ -2,11 +2,12 @@ import { URL, fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import Laravel from 'laravel-vite-plugin'
 import Vue from '@vitejs/plugin-vue'
+import TailwindCSS from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [
     Laravel({
-      input: 'resources/js/app.js',
+      input: ['resources/css/app.css', 'resources/js/app.js'],
       refresh: true,
     }),
     Vue({
@@ -17,6 +18,7 @@ export default defineConfig({
         },
       },
     }),
+    TailwindCSS(),
   ],
   resolve: {
     alias: {
