@@ -1,6 +1,6 @@
 # Inertia v2 範例
 
-![](screenshot.png)
+![](screenshot.jpg)
 
 使用 Composer 安裝：
 
