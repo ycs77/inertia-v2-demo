@@ -15,6 +15,14 @@ cp .env.example .env
 php artisan key:generate
 ```
 
+設定資料庫連線資訊，然後執行遷移和填充假資料：
+
+```bash
+touch database/database.sqlite
+php artisan migrate
+php artisan db:seed
+```
+
 安裝 npm 依賴套件：
 
 ```bash

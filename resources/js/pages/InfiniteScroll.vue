@@ -3,38 +3,29 @@
     <h2 class="text-2xl font-bold">Infinite Scroll (無限滾動)：無限滾動載入資料</h2>
 
     <div class="mt-6">
-      <ul class="border-2 border-indigo-500 divide-y-2 divide-indigo-500">
-        <li v-for="item in items" :key="item.id" class="block px-4 py-2.5 text-gray-600">
-          {{ item.title }}
-        </li>
-      </ul>
-
-      <WhenVisible
-        always
-        :buffer="200"
-        :params="{
-          data: {
-            page: page + 1,
-          },
-          only: ['items', 'page'],
-          preserveUrl: true,
-        }"
+      <InfiniteScroll
+        data="users"
+        as="ul"
+        :buffer="1000"
+        preserve-url
+        class="border-2 border-indigo-500 divide-y-2 divide-indigo-500"
       >
-        <template #fallback>
+        <li v-for="user in users.data" :key="user.id" class="block px-4 py-2.5 text-gray-600">
+          {{ user.name }} ({{ user.email }})
+        </li>
+
+        <template #loading>
           <div class="p-4 text-center bg-gray-100">載入中...</div>
         </template>
-
-        <div class="p-4 text-center bg-gray-100">載入中...</div>
-      </WhenVisible>
+      </InfiniteScroll>
     </div>
   </div>
 </template>
 
 <script setup>
-import { WhenVisible } from '@inertiajs/vue3'
+import { InfiniteScroll } from '@inertiajs/vue3'
 
 const props = defineProps({
-  items: Object,
-  page: Number,
+  users: Object,
 })
 </script>

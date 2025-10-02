@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -125,18 +125,8 @@ Route::get('/lazy-loading', function () {
     ]);
 });
 
-Route::get('/infinite-scroll', function (Request $request) {
-    $page = (int) $request->query('page', 1);
-    $perPage = 30;
-    $start = ($page - 1) * $perPage + 1;
-    $end = $start - 1 + $perPage;
-
+Route::get('/infinite-scroll', function () {
     return Inertia::render('InfiniteScroll', [
-        'items' => Inertia::merge(function () use ($start, $end) {
-            return collect(range($start, $end))->map(function ($i) {
-                return ['id' => $i, 'title' => 'Item ' . $i];
-            })->toArray();
-        }),
-        'page' => $page,
+        'users' => Inertia::scroll(fn () => User::paginate(100)),
     ]);
 });
